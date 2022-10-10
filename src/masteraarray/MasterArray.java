@@ -4,10 +4,10 @@ import java.util.Arrays;
 
 public class MasterArray {
 	public static void main(String[] args) {
-		int[] a = { 1,3,5,7 };
-		int[] b = { 2,4,6,8 };
-		//printArray(a, "Before");
-		printArray(mergeSortedArrays(a,b), "After");
+		int[] a = { 1, 3, 5, 7 };
+		int[] b = { 2, 0,4,-1,0,-2, 6, 8 };
+		// printArray(a, "Before");
+		printArray(moveZeros(b), "After");
 	}
 
 	public static void printArray(int[] a, String s) {
@@ -42,23 +42,40 @@ public class MasterArray {
 
 	}
 
+	public static int[] moveZeros(int[] a) {
+		int j = 0;
+		for (int i = 0; i < a.length; i++) {
+			if (a[i] != 0) {
+				a[j++] = a[i];
+
+			}
+
+		}
+		while (j < a.length) {
+			a[j++] = 0;
+		}
+
+		return a;
+
+	}
+
 	public static int[] mergeSortedArrays(int[] a, int[] b) {
 		int[] mergedArra = new int[a.length + b.length];
-		int i=0,j=0,k=0;
-		while(i<a.length && j<b.length) {
-			if(a[i]<b[j]) {
-				mergedArra[k++]=a[i++];
-			}else {
-				mergedArra[k++]=b[j++];
+		int i = 0, j = 0, k = 0;
+		while (i < a.length && j < b.length) {
+			if (a[i] < b[j]) {
+				mergedArra[k++] = a[i++];
+			} else {
+				mergedArra[k++] = b[j++];
 			}
 		}
-		while(i<a.length) {
-			mergedArra[k++]=i++;
+		while (i < a.length) {
+			mergedArra[k++] = i++;
 		}
-		while(j<a.length) {
-			mergedArra[k++]=j++;
+		while (j < a.length) {
+			mergedArra[k++] = j++;
 		}
-		
+
 		return mergedArra;
 	}
 
